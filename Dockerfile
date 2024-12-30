@@ -14,6 +14,11 @@ CMD ["npm", "run", "build", "--", "--watch"]
 FROM base as backend
 WORKDIR /app/packages/backend
 COPY packages/backend/ .
+# Install MongoDB and Redis client dependencies
+RUN npm install mongoose redis
+# Add healthcheck for MongoDB and Redis connections
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:4000/health || exit 1
 EXPOSE 4000
 CMD ["npm", "run", "dev"]
 

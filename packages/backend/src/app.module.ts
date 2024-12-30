@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GameModule } from './game';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { GameModule } from './game';
     }),
     MongooseModule.forRoot(process.env.MONGODB_URI || 'mongodb://localhost:27017/uno-king'),
     GameModule,
+    HealthModule,
   ],
 })
 export class AppModule {} 
