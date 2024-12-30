@@ -1,6 +1,20 @@
 version: '3.8'
 
 services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
   shared:
     build:
       context: .
@@ -22,9 +36,13 @@ services:
       - shared_dist:/app/packages/shared/dist
     depends_on:
       - shared
+      - mongodb
+      - redis
     environment:
       - PORT=4000
       - NODE_ENV=development
+      - MONGODB_URI=mongodb://mongodb:27017/unoking
+      - REDIS_URI=redis://redis:6379
 
   frontend:
     build:
@@ -43,4 +61,6 @@ services:
       - VITE_BACKEND_URL=http://localhost:4000
 
 volumes:
-  shared_dist: 
+  shared_dist:
+  mongodb_data:
+  redis_data: 
