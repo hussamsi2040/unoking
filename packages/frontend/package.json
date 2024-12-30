@@ -1,0 +1,35 @@
+{
+  "name": "@uno-king/frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx",
+    "preview": "vite preview",
+    "test": "vitest",
+    "serve": "serve -s dist -l 3000"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.19",
+    "@uno-king/shared": "1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "socket.io-client": "^4.7.2",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@emotion/babel-plugin": "^11.13.5",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.0",
+    "serve": "^14.2.4",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.4",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^0.34.6"
+  }
+}
